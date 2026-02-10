@@ -608,6 +608,16 @@
 		},
 	});
 
+	var swiper = new Swiper(".tp-program-active", {
+    slidesPerView: 3, // or whatever your setting is
+    spaceBetween: 30,
+    breakpoints: {
+        // Ensure slides look good on smaller screens
+        0: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        1200: { slidesPerView: 3 }
+    }
+});
 
 	// home Two
 	$('.tp-testimonial-2-active').slick({
@@ -1381,6 +1391,14 @@
 			},
 		},
     });
-
+ 
+	$('.td_hamburger_btn').on('click', function () {
+      $('.td_side_header').addClass('active');
+      $('html').addClass('td_hamburger_active');
+    });
+    $('.td_close, .td_side_header_overlay').on('click', function () {
+      $('.td_side_header').removeClass('active');
+      $('html').removeClass('td_hamburger_active');
+    });
 
 })(jQuery);

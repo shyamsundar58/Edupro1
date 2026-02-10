@@ -270,7 +270,8 @@ li,
   --tp-border-primary: #EAEBED;
   --tp-border-2: #E4E2DC;
 
-  --accent-color: #890c25
+  --white-color: #fff;
+  --accent-color: #890c25;
 }
 
 * {
@@ -13758,7 +13759,7 @@ a.social-yout {
 .tp-cta-title {
   color: var(--tp-common-white);
   font-family: var(--tp-ff-primary);
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 500;
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
@@ -13779,6 +13780,10 @@ a.social-yout {
 .tp-cta-btn .tp-btn {
   background-color: var(--tp-common-white);
   color: var(--tp-theme-primary);
+  display: inline-flex;    /* Keeps text and arrow in a row */
+    align-items: center;     /* Centers them vertically */
+    white-space: nowrap;     /* Forces the button to stay on one line */
+    justify-content: center;
 }
 .tp-cta-btn .tp-btn:hover {
   border-color: rgba(255, 255, 255, 0.92);
@@ -22558,7 +22563,7 @@ span.dark-border {
   animation-duration: 0.9s;
 }
 
-.tp-slider-active .swiper-slide-active .tp-hero-subtitle, .tp-slider-active .swiper-slide-active .tp-hero-title, .tp-slider-active .swiper-slide-active .tp-hero-btn {
+/* .tp-slider-active .swiper-slide-active .tp-hero-subtitle, .tp-slider-active .swiper-slide-active .tp-hero-title, .tp-slider-active .swiper-slide-active .tp-hero-btn {
   animation-fill-mode: both;
   animation-name: fadeInUp;
 }
@@ -22577,7 +22582,75 @@ span.dark-border {
 }
 .tp-slider-active .swiper-slide-active .tp-hero-bg {
   transform: scale(1.1);
+} */
+
+/* 1. Force all slides in the wrapper to match the height of the tallest slide */
+.tp-program-active .swiper-wrapper {
+    display: flex;
 }
+
+.tp-program-active .swiper-slide {
+    height: auto; /* Allows flex to dictate height */
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2. Make the content area expand to push the button to the bottom */
+.tp-program-item {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Fill the swiper-slide height */
+}
+
+.tp-program-content {
+    flex-grow: 1; /* This pushes the 'Apply Now' button to the bottom */
+    display: flex;
+    flex-direction: column;
+}
+
+/* 3. Standardize Title Area */
+.tp-program-title {
+    min-height: 60px; /* Ensures all descriptions start at the same line */
+    margin-bottom: 15px;
+}
+
+/* 4. Fix the Description Height (DO NOT use flex-grow here) */
+.tp-program-content p:not(.tp-program-tag p) {
+    min-height: 100px; /* Forces all tags to sit on the same horizontal line */
+    margin-bottom: 10px;
+    flex-grow: 0; /* Stop it from pushing the tags down unevenly */
+}
+
+/* 5. Fix the Tag & Icon Alignment */
+.tp-program-tag {
+    display: flex !important;
+    align-items: flex-start !important; /* Anchors icon to the top of the text */
+    gap: 10px;
+    min-height: 45px; /* Ensures the 'Apply Now' buttons align below the tags */
+    margin-bottom: 20px;
+    margin-top: auto; /* Pushes the tag/button group to the bottom */
+}
+
+.tp-program-tag p {
+    margin: 0 !important;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.4;
+    flex-grow: 0; /* Ensure this doesn't stretch */
+}
+
+/* 6. Icon Positioning */
+.tp-program-tag span {
+    display: inline-flex;
+    margin-top: 3px; /* Fine-tune to align icon with the middle of the first line of text */
+    flex-shrink: 0;
+}
+
+/* 7. Button - Anchored at the absolute bottom */
+.tp-program-btn {
+    margin-top: auto;
+}
+
 
 /*----------------------------------------*/
 /*  9.1 Price css
@@ -39543,4 +39616,288 @@ span.common-pale-purple {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+}
+
+/*--------------------------------------------------------------
+20. Features
+----------------------------------------------------------------*/
+.td_features.td_style_1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+@media (max-width: 991px) {
+  .td_features.td_style_1 {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+.td_features.td_style_1 .td_features_content,
+.td_features.td_style_1 .td_features_thumb {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  width: 50%;
+}
+@media (max-width: 991px) {
+  .td_features.td_style_1 .td_features_content,
+  .td_features.td_style_1 .td_features_thumb {
+    width: 100%;
+  }
+}
+.td_features.td_style_1 .td_features_thumb {
+  position: relative;
+  z-index: 2;
+}
+@media (min-width: 992px) {
+  .td_features.td_style_1 .td_features_thumb img {
+    width: calc(100% + 110px);
+    max-width: initial;
+  }
+}
+.td_features.td_style_1 .td_feature_list {
+  max-width: 465px;
+}
+.td_features.td_style_1 .td_features_content {
+  margin-top: 200px;
+  -webkit-box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.1);
+  padding: 60px;
+  position: relative;
+  z-index: 3;
+}
+@media (max-width: 1199px) {
+  .td_features.td_style_1 .td_features_content {
+    padding: 40px 30px;
+  }
+}
+@media (max-width: 991px) {
+  .td_features.td_style_1 .td_features_content {
+    margin-top: 40px;
+  }
+}
+@media (max-width: 575px) {
+  .td_features.td_style_1 .td_features_content {
+    padding: 40px 15px;
+  }
+  .td_features.td_style_1 .td_features_content .td_mb_15 {
+    margin-bottom: 8px;
+  }
+}
+.td_features.td_style_1 .td_features_content li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.td_features.td_style_1 .td_features_content li:not(:last-child) {
+  margin-bottom: 40px;
+}
+@media (max-width: 575px) {
+  .td_features.td_style_1 .td_features_content li:not(:last-child) {
+    margin-bottom: 25px;
+  }
+}
+@media (max-width: 350px) {
+  .td_features.td_style_1 .td_features_content li {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    gap: 12px;
+  }
+}
+.td_features.td_style_1 .td_features_content li:hover .td_feature_icon::before {
+  opacity: 0.15;
+}
+.td_features.td_style_1 .td_features_content .td_feature_icon {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  height: 100px;
+  width: 100px;
+  padding: 15px;
+  position: relative;
+}
+@media (max-width: 575px) {
+  .td_features.td_style_1 .td_features_content .td_feature_icon {
+    height: 80px;
+    width: 80px;
+  }
+}
+.td_features.td_style_1 .td_features_content .td_feature_icon::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+  background-color: var(--accent-color);
+  opacity: 0.05;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.td_features.td_style_1 .td_features_content .td_feature_icon svg,
+.td_features.td_style_1 .td_features_content .td_feature_icon img {
+  position: relative;
+  z-index: 1;
+}
+.td_features.td_style_1 .td_features_content .td_feature_icon svg path {
+  fill: var(--accent-color);
+}
+.td_features.td_style_1 .td_features_shape_1 {
+  left: 49%;
+  top: 5%;
+  opacity: 0.15;
+}
+@media (max-width: 991px) {
+  .td_features.td_style_1 .td_features_shape_1 {
+    display: none;
+  }
+}
+.td_features.td_style_1 .td_features_shape_2 {
+  left: 10%;
+  bottom: 0;
+  opacity: 0.15;
+}
+@media (max-width: 991px) {
+  .td_features.td_style_1 .td_features_shape_2 {
+    display: none;
+  }
+}
+
+.td_features.td_style_2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+@media (max-width: 991px) {
+  .td_features.td_style_2 {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+.td_features.td_style_2 .td_feature_list li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 15px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.td_features.td_style_2 .td_feature_icon {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  width: 50px;
+}
+.td_features.td_style_2 .td_feature_icon img {
+  width: 100%;
+}
+.td_features.td_style_2 .td_features_content_wrap {
+  padding: 80px 0;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  width: 57%;
+}
+@media (max-width: 991px) {
+  .td_features.td_style_2 .td_features_content_wrap {
+    width: 100%;
+    padding: 40px 0 0;
+  }
+}
+.td_features.td_style_2 .td_features_content {
+  -webkit-box-shadow: 2px 2px 50px 0px rgba(0, 0, 27, 0.1);
+          box-shadow: 2px 2px 50px 0px rgba(0, 0, 27, 0.1);
+  padding: 60px;
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 575px) {
+  .td_features.td_style_2 .td_features_content {
+    padding: 40px 25px;
+  }
+}
+.td_features.td_style_2 .td_feature_list {
+  max-width: 400px;
+}
+.td_features.td_style_2 .td_feature_list li:not(:last-child) {
+  margin-bottom: 40px;
+}
+.td_features.td_style_2 .td_features_thumb {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  width: 57%;
+  margin-right: -14%;
+}
+@media (max-width: 991px) {
+  .td_features.td_style_2 .td_features_thumb {
+    width: 100%;
+    height: 400px;
+    margin-right: 0;
+  }
+}
+.td_features.td_style_2 .td_player_btn_wrap {
+  position: relative;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+.td_features.td_style_2 .td_player_btn_wrap::after {
+  content: "";
+  position: absolute;
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  border: 1px dashed #fff;
+  left: -5px;
+  top: -5px;
+  -webkit-animation: rotate-anim 25s linear infinite;
+          animation: rotate-anim 25s linear infinite;
+}
+.td_features.td_style_2 .td_player_btn_wrap:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+.td_features.td_style_2 .td_player_btn {
+  height: 80px;
+  width: 80px;
+}
+.td_features.td_style_2 .td_player_btn::before {
+  display: none;
+}
+.td_features.td_style_2 .td_player_btn span {
+  -webkit-transform: scale(1.6);
+          transform: scale(1.6);
+}
+
+.td_features_2_wrap {
+  position: relative;
+}
+.td_features_2_wrap .container {
+  position: relative;
+  z-index: 2;
+}
+.td_features_2_wrap::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 195px;
+  width: 100%;
+  background-color: var(--accent-color);
 }
