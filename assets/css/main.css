@@ -38598,6 +38598,10 @@ span.common-pale-purple {
 .td_side_header.active .td_side_header_in {
   right: 0;
 }
+
+/* jjjjjjjjjjjjjjjj */
+
+
 .td_side_header .td_side_header_contact_info li {
   padding-left: 32px;
   position: relative;
@@ -39900,4 +39904,21 @@ span.common-pale-purple {
   height: 195px;
   width: 100%;
   background-color: var(--accent-color);
+}
+
+/* Override to ensure Features style is used */
+.td_features.td_style_1 {
+  display: flex;
+  flex-wrap: wrap;
+  /* gap: 30px; */
+}
+
+.td_features_content.td_white_bg {
+  background-color: #ffffff !important;
+  border-radius: 10px;
+  padding: 60px;
+  margin-top: -100px; /* Adjust based on your Features design */
+  position: relative;
+  z-index: 2;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
 }

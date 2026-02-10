@@ -48,3 +48,6 @@
 @import 'shortcode/features';
 @import 'shortcode/pricing_plan';
 @import 'shortcode/contact';
+@import 'shortcode/expertise'; // Expertise loaded first
+@import 'shortcode/features';  // Features loaded last (wins the conflict)
+@import 'common/header'
