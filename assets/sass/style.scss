@@ -37,7 +37,6 @@
 @import 'common/footer';
 @import 'common/sidebar';
 @import 'shortcode/about';
-@import 'shortcode/newsletter';
 @import 'shortcode/hero';
 @import 'shortcode/iconbox';
 @import 'shortcode/post';
@@ -50,4 +49,6 @@
 @import 'shortcode/contact';
 @import 'shortcode/expertise'; // Expertise loaded first
 @import 'shortcode/features';  // Features loaded last (wins the conflict)
+@import 'shortcode/newsletter';
+
 @import 'common/header'
