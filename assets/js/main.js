@@ -1402,3 +1402,70 @@
     });
 
 })(jQuery);
+
+$(document).ready(function () {
+    // 1. Get your logo from the home screen
+    const siteLogo = $('.td_site_branding img').attr('src');
+
+    function createFreshRedMenu() {
+        // Remove any old attempts to keep the DOM clean
+        $('.td_custom_fs_overlay').remove();
+
+        $('body').append(`
+            <div class="td_custom_fs_overlay">
+                <div class="td_fs_header">
+                    <div class="td_fs_logo">
+                        <img src="${siteLogo}" style="width:125px; height:49px; object-fit:cover;" alt="Logo">
+                    </div>
+                    <div class="td_fs_actions">
+                        <span class="td_fs_lang">English <i class="fa-solid fa-globe"></i></span>
+                        <span class="td_fs_search"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <div class="td_fs_close_icon">✕</div>
+                    </div>
+                </div>
+                <div class="td_fs_nav_container">
+                    <ul class="td_fs_main_ul"></ul>
+                </div>
+            </div>
+        `);
+
+        // Manually clone all LI items to ensure Home, Courses, About, Pages, Blogs, Contact are ALL there
+        $('.td_nav_list > li').each(function() {
+            $(this).clone().appendTo('.td_fs_main_ul');
+        });
+
+        // Add dropdown indicators (+)
+        $('.td_fs_main_ul li').each(function() {
+            if ($(this).hasClass('menu-item-has-children') || $(this).find('ul').length > 0) {
+                $(this).append('<span class="td_fs_plus">+</span>');
+            }
+        });
+    }
+
+    createFreshRedMenu();
+
+    // 2. THE KILL SWITCH (Event Capturing)
+    // This stops the theme's old swiper from ever triggering
+    const hamburger = document.querySelector('.td_hamburger_btn');
+    if (hamburger) {
+        hamburger.addEventListener('click', function (e) {
+            if (window.innerWidth <= 1199) {
+                e.preventDefault();
+                e.stopImmediatePropagation(); // Stops other scripts
+                $('.td_custom_fs_overlay').addClass('active');
+                $('html').addClass('td_no_scroll_body');
+            }
+        }, true); // The 'true' here gives us priority over the theme
+    }
+
+    // 3. Close & Toggle Logic
+    $(document).on('click', '.td_fs_close_icon', function () {
+        $('.td_custom_fs_overlay').removeClass('active');
+        $('html').removeClass('td_no_scroll_body');
+    });
+
+    $(document).on('click', '.td_fs_plus', function () {
+        $(this).siblings('ul, .td_mega_wrapper').slideToggle(300);
+        $(this).text($(this).text() == '+' ? '-' : '+');
+    });
+});
