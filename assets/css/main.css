@@ -40386,7 +40386,7 @@ body .edu_custom_input {
     /* Prevent the container from expanding beyond the screen */
     .container, .program-area {
         max-width: 100% !important;
-        /* overflow-x: hidden !important; */
+        overflow-x: hidden !important;
         padding: 0 15px;
     }
 
@@ -40412,7 +40412,25 @@ body .edu_custom_input {
         flex: 0 0 100% !important; /* One box per row on mobile */
     }
 }
+/* Prevent the section from being trapped under other layers */
+.service-area.tp-service-bg {
+    position: relative !important;
+    z-index: 10 !important; /* Higher than the background or previous sections */
+    overflow: visible !important; /* This allows the boxes to 'pop' out/front again */
+}
 
+/* Ensure the container inside handles the breadth without shrinking the whole site */
+.service-area .container {
+    max-width: 100% !important;
+    overflow-x: clip !important; /* 'clip' is better than 'hidden' for layering issues */
+    padding: 0 15px;
+}
+
+/* Ensure the individual items are forced to the front on hover/mobile */
+.tp-service-item {
+    position: relative !important;
+    z-index: 11 !important;
+}
 /* Force the right-side container to stay in one line */
 .td_main_header_right {
     display: flex !important;
