@@ -3828,6 +3828,17 @@ div.demo img {
   position: relative;
   display: inline-block;
 }
+.col.text-end {
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media only screen and (max-width: 767px) {
+    .tp-section-2-title {
+        white-space: normal; /* Allow wrap on small mobile screens */
+        flex-wrap: wrap;
+    }
+}
 .tp-section-3-subtitle {
   color: var(--tp-theme-secondary);
   font-size: 18px;
@@ -40566,5 +40577,11 @@ body .edu_custom_input {
 
     .td_no_scroll_body {
         overflow: hidden !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .td_custom_fs_overlay {
+        display: none !important;
     }
 }
