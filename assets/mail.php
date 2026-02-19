@@ -87,7 +87,7 @@
 
         //Email Header
 
-        $head = " /// Theme_Pure Acadia HTML \\\ ";
+        $head = " /// Theme_Pure EduPro HTML \\\ ";
 
 
 

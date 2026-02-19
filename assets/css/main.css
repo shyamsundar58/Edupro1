@@ -636,7 +636,7 @@ input[type=color] {
 }
 
 .tp-header-logo img {
-  width: 147px;
+  width: 157px;
 }
 
 .demo {
@@ -38629,7 +38629,19 @@ span.common-pale-purple {
   width: 18px;
   text-align: center;
 }
+.td_side_header_contact_info li {
+    display: flex;
+    align-items: flex-start; /* Use center if you want middle alignment */
+    margin-bottom: 12px;
+}
 
+.td_side_header_contact_info li i {
+    width: 28px; /* Fixed width for icons */
+    margin-right: 10px;
+    color: #890C25; /* Matches your theme color */
+    display: flex;
+    justify-content: center; /* Centers icon inside the 28px box */
+}
 .td_close {
   position: fixed;
   right: 30px;
