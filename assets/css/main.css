@@ -1019,7 +1019,7 @@ div.demo img {
 .back-to-top-wrapper.back-to-top-btn-show {
   visibility: visible;
   opacity: 1;
-  bottom: 50px;
+  /* bottom: 50px; */
 }
 
 .back-to-top-btn {
@@ -2347,7 +2347,7 @@ div.demo img {
 }
 .nice-select::after {
   position: absolute;
-  content: "\f107";
+  /* content: "\f107"; */
   top: 50%;
   right: 0;
   font-family: var(--tp-ff-fontawesome);
@@ -8395,7 +8395,7 @@ body .ui-tooltip {
   position: relative;
 }
 .main-menu > nav > ul > li.has-dropdown > a::after {
-  content: "\f107";
+  /* content: "\f107"; */
   font-size: 12px;
   color: var(--tp-common-white);
   font-family: var(--tp-ff-fontawesome);
@@ -40596,4 +40596,54 @@ body .edu_custom_input {
     .td_custom_fs_overlay {
         display: none !important;
     }
+}
+
+.td_heading_link {
+    display: block;          /* Makes it take up the full width like an h2 */
+    text-decoration: none;   /* Removes the underline */
+    color: #1a1a1a;          /* Set this to your exact heading color */
+    font-size: 48px;         /* Matches td_fs_48 */
+    font-weight: 700;        /* Bold like a title */
+    line-height: 1.2;
+    transition: all 0.3s ease;
+}
+
+/* Optional: Slight hover effect so people know it's a link */
+
+.fixed-controls-wrapper {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    display: flex;         /* This puts them in a row */
+    align-items: center;   /* Centers them vertically against each other */
+    gap: 15px;             /* Space between the two buttons */
+    z-index: 9999;         /* Keeps them above everything else */
+}
+
+/* WhatsApp Button Styling */
+.whatsapp-btn {
+    background-color: #25d366;
+    color: white;
+    width: 45px;           /* Match this to your Back-to-Top button size */
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-5px); /* Gentle float up on hover */
+    color: white;
+}
+
+/* Ensure your existing Back to Top button doesn't have its own fixed positioning anymore */
+.back-to-top-wrapper {
+    position: relative;    /* Change from fixed to relative */
+    right: auto;
+    bottom: auto;
 }
